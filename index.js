@@ -134,27 +134,18 @@ function inning1(){
 }
 
 function getInningScore(num, callback) {
-  let homeScores = [];
-  let awayScores = [];
+  let homeScore = 0;
+  let awayScore = 0;
   for (let i = 0; i < num; i++) {
-    homeScores.push(callback());
-    // awayScore.push(inning());
-    homeScores.reduce((a, b) => a + b);
-    // awayScore.reduce((a, b) => a + b);
+    homeScore += callback();
+    awayScore += inning();
+    console.log(`Inning ${i+1}: ${awayScore} - ${homeScore}`);
   }
-  return homeScores
+  console.log(`Final Score: ${awayScore} - ${homeScore}`)
 }
 
-console.log(getInningScore(9, inning1));
+function scoreboard(num, inning, getInningScore) {
+  return getInningScore(num, inning);
+  }
 
-
-
-// function scoreboard(num, inning, getInningScore) {
-//   let scoreBoard = [];
-//   for (let i = 0; i < num; i++) {
-//     scoreBoard.push(getInningScore(num, inning));
-//   }
-//   return scoreBoard
-// }
-
-// console.log(scoreboard(9, inning1, getInningScore));
+scoreboard(9, inning1, getInningScore);
