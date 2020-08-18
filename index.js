@@ -93,17 +93,17 @@ finalScore(inning, 9) might return:
 
 */ 
 
-function finalScore(num, inning){
-  let homeScore = [];
-  let awayScore = [];
-  for (let i = 0; i < num; i++) {
-  homeScore.push(inning());
-  awayScore.push(inning());
-}
-return {"Home": homeScore.reduce((a, b) => a + b), "Away": awayScore.reduce((a, b) => a + b)};
-}
+// function finalScore(num, inning){
+//   let homeScore = [];
+//   let awayScore = [];
+//   for (let i = 0; i < num; i++) {
+//   homeScore.push(inning());
+//   awayScore.push(inning());
+// }
+// return {"Home": homeScore.reduce((a, b) => a + b), "Away": awayScore.reduce((a, b) => a + b)};
+// }
 
-console.log(finalScore(9, inning));
+// console.log(finalScore(9, inning));
 
 // console.log(finalScore(inning));
 
@@ -127,25 +127,25 @@ and returns the score at each pont in the game, like so:
 9th inning: awayTeam - homeTeam
 Final Score: awayTeam - homeTeam */
 
-function inning1(){
-
-  return (Math.round(Math.random() * 2));    
-
-}
-
-function getInningScore(num, callback) {
-  let homeScore = 0;
-  let awayScore = 0;
+function getInningScore(num, inning) {
+  let inningScore = {"Home": 0, "Away": 0};
   for (let i = 0; i < num; i++) {
-    homeScore += callback();
-    awayScore += inning();
-    console.log(`Inning ${i+1}: ${awayScore} - ${homeScore}`);
+    inningScore.Home += inning();
+    inningScore.Away += inning();
   }
-  console.log(`Final Score: ${awayScore} - ${homeScore}`)
+  return inningScore;
 }
 
 function scoreboard(num, inning, getInningScore) {
-  return getInningScore(num, inning);
+    let home = 0;
+    let away = 0;
+    for (let i = 0; i < num; i++) {
+      let inningTotal = getInningScore(1, inning);
+      console.log(`Inning ${i + 1}: ${inningTotal.Home} - ${inningTotal.Away}`);
+      home += inningTotal.Home;
+      away += inningTotal.Away;
   }
+  console.log(`Final Score: ${home} - ${away}`);
+}
 
-scoreboard(9, inning1, getInningScore);
+scoreboard(9, inning, getInningScore);
