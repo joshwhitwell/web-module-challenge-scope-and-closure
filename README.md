@@ -42,6 +42,11 @@ Find the file `index.js` and complete the tasks.
 Edit the `ReadMe` file with your answers.
 
 1. In your own words, define closure (1-2 sentences).
+
+<!--
+Closures describes the combination of a function and the lexical environment within which the function is declared. Closure occurs when a function must reaches outside of its own functional scope/lexical context to access data, such as a variable.
+-->
+
 2. Study the following code, then answer the questions below.
 
 ```js
@@ -49,6 +54,7 @@ function personalDice(name){
   return function(){
       // generate random number between 1 and 6
     const newRoll = Math.floor(Math.random() * 6);
+    debugger;
     console.log(`${name} rolled a ${newRoll}`)
   }
 }
@@ -63,8 +69,22 @@ dansRoll();
 ```
 
 a. Where is closure used in this code? How can you tell?
+
+<!--
+Closure is used in this code at console.log(`${name} rolled a ${newRoll}`) because at that line of execution the anonymous function must reach outside its functinal scope to access the variable name "Dan" or "Zoe" which is provided at the functional scope of personalDice.
+-->
+
 b. Compare and contrast calling `dansRoll` the first and second time. What is always the same? What could change?
+
+<!--
+Invoking the function 'dansRoll' will always return the string `Dan rolled a ${newRoll}`; where ${newRoll} will change each time the funciton is called. This is because in the declaration of dansRoll, it is defined to take "Dan" as its argument for the name parameter, whereas newRoll is generated each time the function is called.
+-->
+
 c. What is the lexical scope of `newRoll`? 
+
+<!--
+The lexical scope of newRoll is the anonymous function inside of the personalDice function. This means that newRoll is available inside of the anonymous function, but it is not available outside, i.e. at the functional scope of personalDice.
+-->
 
 ### Task 2c - Exit Ticket
 
