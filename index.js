@@ -74,7 +74,7 @@ Write a function called `inning` that returns a random number of points that a t
 
 function inning(){
 
-    return (Math.round(Math.random() * 2));    
+    return (Math.floor(Math.random() * 3));    
 
 }
 
